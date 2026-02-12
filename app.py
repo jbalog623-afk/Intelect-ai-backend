@@ -18,5 +18,8 @@ def generate_description():
         )
         return jsonify({"description": response.choices[0].message.content})
     except Exception as e:
-        return jsonify({"error": str(e)}), if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+        return jsonify({"error": str(e)}), 500  # <--- notice the comma 500 is here, line ends
+
+if __name__ == "__main__":
+    # This must be **not indented inside the function**
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
